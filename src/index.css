@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 96%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 82 95% 70%;
+    --primary-foreground: 0 0% 2%;
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 0 0% 96%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 82 95% 70%;
+    --accent-foreground: 0 0% 2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 25%;
+    --input: 0 0% 15%;
+    --ring: 82 95% 70%;
+    --radius: 0.5rem;
+    
+    --lime: #c5fb67;
+    --void: #050505;
+    --charcoal: #111111;
+    --gray: #404040;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-[#050505] text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+  
+  ::selection {
+    background: rgba(197, 251, 103, 0.3);
+    color: #fff;
+  }
+}
+
+/* Typography */
+.font-display {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.font-mono {
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c5fb67;
+}
+
+/* Glow Effects */
+.glow-lime {
+  box-shadow: 0 0 20px rgba(197, 251, 103, 0.3),
+              0 0 40px rgba(197, 251, 103, 0.2),
+              0 0 60px rgba(197, 251, 103, 0.1);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(197, 251, 103, 0.5),
+               0 0 20px rgba(197, 251, 103, 0.3);
+}
+
+/* Grid Background */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(64, 64, 64, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(64, 64, 64, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Noise Texture */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 5px rgba(197, 251, 103, 0.5),
+                0 0 10px rgba(197, 251, 103, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 15px rgba(197, 251, 103, 0.8),
+                0 0 30px rgba(197, 251, 103, 0.5);
+  }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes draw-line {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Card Hover */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(197, 251, 103, 0.1);
+}
+
+/* Skill Tag */
+.skill-tag {
+  @apply px-4 py-2 rounded-full border border-[#404040] bg-[#111111]/50 text-sm text-[#eee];
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skill-tag:hover {
+  @apply border-[#c5fb67] text-[#c5fb67];
+  box-shadow: 0 0 20px rgba(197, 251, 103, 0.2);
+  transform: scale(1.05);
+}
+
+/* Timeline */
+.timeline-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.timeline-line.animate {
+  animation: draw-line 1.5s ease forwards;
+}
+
+/* Input Focus */
+.input-glow:focus {
+  @apply border-[#c5fb67];
+  box-shadow: 0 0 15px rgba(197, 251, 103, 0.3);
+}
+
+/* Button Styles */
+.btn-primary {
+  @apply px-6 py-3 bg-[#c5fb67] text-[#050505] font-medium rounded-lg;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary:hover {
+  @apply bg-[#d4fc85];
+  box-shadow: 0 0 30px rgba(197, 251, 103, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  @apply px-6 py-3 border border-[#404040] text-[#eee] font-medium rounded-lg;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-outline:hover {
+  @apply border-[#c5fb67] text-[#c5fb67];
+  box-shadow: 0 0 20px rgba(197, 251, 103, 0.2);
+}
+
+/* Section Padding */
+.section-padding {
+  @apply px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24;
+}
+
+/* Hide scrollbar for horizontal scroll */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
