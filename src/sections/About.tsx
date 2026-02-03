@@ -176,7 +176,7 @@ export default function About() {
                 
                 {/* Image */}
                 <img
-                  src="/profile.jpg"
+                  src="./profile.jpg"
                   alt="Kishore Alajangi"
                   className="relative w-full h-full object-cover rounded-2xl border border-gray/30"
                 />
